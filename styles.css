@@ -1,0 +1,24 @@
+@import "styles/card.css";
+
+*{
+    font-family: 'Quicksand', sans-serif;
+    outline: none !important;
+}
+
+html{
+    font-size: 18px;
+}
+
+body{
+    overflow: hidden;
+    color: rgba(0,0,0,0.7);
+    /*background-color: #4CAF50;*/
+    margin: 0;
+    padding: 5px 0;
+}
+
+@media screen and (min-width: 1000px){
+    body{
+        padding: 5px 5%;
+    }
+}
