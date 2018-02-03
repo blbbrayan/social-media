@@ -3,7 +3,9 @@
     class core{
 
         constructor(){
-            this.loadPage('home');
+            global.onload = () => {
+                this.loadPage('home');
+            }            
         }
 
         async loadFile(path){
@@ -32,13 +34,12 @@
             document.body.appendChild(link);
 
             //To ensure the page is loaded before loading the script
-            setTimeout(()=>{},0);
+            // setTimeout(()=>{},0); // use the window.onload event instead, in the constructor
 
             script.id = 'script';
             script.src = `${path}.js`;
             document.body.appendChild(script);
         }
-
     }
 
     new core();
