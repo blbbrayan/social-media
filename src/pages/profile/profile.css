@@ -1,0 +1,45 @@
+.primary {
+  background-color: #4b54fe;
+  color: white; }
+
+.secondary {
+  background-color: #da5858;
+  color: white; }
+
+.accent {
+  background-color: #00a1ff;
+  color: white; }
+
+body {
+  background-color: #4b54fe; }
+
+card {
+  padding: 2px 15px;
+  margin: 10px 0; }
+
+h1 {
+  color: white;
+  text-align: center;
+  margin-bottom: 0; }
+
+.left {
+  float: left; }
+
+.right {
+  float: right; }
+
+.options {
+  color: white;
+  height: 23px;
+  margin-bottom: 10px; }
+  .options a {
+    margin: 0 10px; }
+
+accordian {
+  display: block; }
+  accordian h2 {
+    display: block;
+    color: white;
+    font-weight: bolder;
+    padding-left: 10px;
+    margin: 10px 0; }
