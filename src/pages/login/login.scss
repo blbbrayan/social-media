@@ -1,26 +1,10 @@
 //    variables
-
-//  media
-$sm: "(max-width: 1000px)";
-$xs: "(max-width: 750px)";
-$not-xs: "(min-width: 750px)";
-
-// colors
-
-$primary: #4b54fe;
-$secondary: #da5858;
-$accent: #00a1ff;
+@import "../../styles/variables.scss";
 
 // ani
 
 $sm-time: 1.3s;
 $sm-time-extend: 1.5s;
-
-//mixins
-
-@mixin box-shadow {
-  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.3);
-}
 
 //elements
 
@@ -34,7 +18,7 @@ background {
   background-size: 100% 100%;
   box-shadow: inset 0 0 0 1000px rgba(0, 161, 255, 0.4);
   color: white;
-  @media #{$sm} {
+  @include sm {
     background-size: 1920px 1080px;
     background-position: center;
   }
@@ -73,7 +57,7 @@ card-page {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   transition: .3s;
-  @media #{$not-xs} {
+  @include not-sm {
     &:hover{
       background-color: rgba(0, 0, 0, .7);
       height: 12px;
@@ -120,7 +104,7 @@ top-half {
   &:active {
     opacity: .3;
   }
-  @media #{$xs} {
+  @include xs {
     right: 10px;
     top: 10px;
   }
@@ -151,6 +135,31 @@ top-half {
   }
 }
 
+#submit {
+  position: absolute;
+  left: 90%;
+  bottom: 15px;
+  width: 65px;
+  height: 65px;
+  border: none;
+  font-size: 32px;
+  color: white;
+  background-color: $accent;
+  border-radius: 100%;
+  box-shadow: 0 7px 7px 0 rgba(0, 0, 0, 0.3);
+  animation: submit-enter 0.7s;
+  animation-delay: $sm-time;
+  cursor: pointer;
+
+  &:focus {
+    border: 4px solid rgba(218, 88, 88, 0.8);
+  }
+
+  @include xs{
+    left: 82%;
+  }
+}
+
 //classes
 
 .menu {
@@ -162,7 +171,7 @@ top-half {
   min-width: 375px;
   max-width: 500px;
   height: 450px;
-  @media #{$xs} {
+  @include xs {
     margin: 20% auto 0;
     background-color: rgba(0, 0, 0, 0.8);
   }
@@ -219,9 +228,9 @@ top-half {
   &.decay {
     margin-top: 100%;
   }
-  @media #{$sm} {
+  @include sm {
     &.decay {
-      margin-top: 100%;
+      margin-top: 200%;
     }
   }
 }
@@ -260,6 +269,10 @@ top-half {
   }
 }
 
+.signup-menu a, #login-menu a {
+  text-decoration: none;
+}
+
 //util classes
 
 .hidden {
@@ -268,31 +281,6 @@ top-half {
 
 .wait-until {
   animation: sm-wait-until $sm-time-extend !important;
-}
-
-#submit {
-  position: absolute;
-  left: 90%;
-  bottom: 15px;
-  width: 65px;
-  height: 65px;
-  border: none;
-  font-size: 32px;
-  color: white;
-  background-color: $accent;
-  border-radius: 100%;
-  box-shadow: 0 7px 7px 0 rgba(0, 0, 0, 0.3);
-  animation: submit-enter 0.7s;
-  animation-delay: $sm-time;
-  cursor: pointer;
-
-  &:focus {
-    border: 4px solid rgba(218, 88, 88, 0.8);
-  }
-}
-
-.signup-menu a, #login-menu a {
-  text-decoration: none;
 }
 
 //Animations
@@ -346,7 +334,7 @@ top-half {
     width: 65px;
     height: 65px;
     box-shadow: 0 7px 7px 0 rgba(0, 0, 0, 0.3);
-    transform: rotateY(0);
+    transform: rotateY(0deg);
   }
 }
 
@@ -402,7 +390,7 @@ top-half {
     margin: 10% calc(50% - 260px) 0;
     width: 500px;
     height: 450px;
-    transform: scale(1.1,1.1) rotateZ(0);
+    transform: scale(1.1,1.1) rotateZ(0deg);
   }
   100% {
     position: absolute;

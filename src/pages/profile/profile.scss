@@ -1,39 +1,5 @@
 //    variables
-
-//  media
-$sm: "(max-width: 1000px)";
-$xs: "(max-width: 750px)";
-$not-xs: "(min-width: 750px)";
-
-// colors
-
-$primary: #4b54fe;
-$secondary: #da5858;
-$accent: #00a1ff;
-
-// ani
-
-$sm-time: 1.3s;
-$sm-time-extend: 1.5s;
-
-//mixins
-
-@mixin box-shadow {
-  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.3);
-}
-
-.primary{
-  background-color: $primary;
-  color: white;
-}
-.secondary{
-  background-color: $secondary;
-  color: white;
-}
-.accent{
-  background-color: $accent;
-  color: white;
-}
+@import "../../styles/variables.scss";
 
 body{
   background-color: $primary;
@@ -65,17 +31,5 @@ h1{
 
   a{
     margin: 0 10px;
-  }
-}
-
-accordian{
-  display: block;
-
-  h2{
-    display: block;
-    color: white;
-    font-weight: bolder;
-    padding-left: 10px;
-    margin: 10px 0;
   }
 }

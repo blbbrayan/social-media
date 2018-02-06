@@ -1,5 +1,26 @@
 ((global, fetch) => {
 
+    const env = (() => {
+        let g = {};
+        const
+            remove = path =>{
+                let obj = g, keys = path.split('.');
+                if (keys.length === 1) return delete g[path];
+                keys.slice(0, keys.length-1).forEach(key=>obj=obj[key]);
+                delete obj[keys.slice(keys.length-1)];
+            },
+            get = path => {
+                let obj = g;
+                path.split('.').forEach(key=>obj=obj[key]);
+                return obj;
+            },
+            add = (path, e) => {
+                let obj = g;
+                path.split('.').forEach((key, i, ar)=> obj[key] ? obj = obj[key] : i === ar.length-1 ? obj[key] = e : obj = obj[key] = {});
+            };
+        return {add, remove, get};
+    })();
+
     async function loadFile(path) {
         return fetch(path)
             .then(res => res.text())
@@ -9,11 +30,17 @@
             });
     }
 
+    async function loadEnvScript(path) {
+        env.add('package', loadEnvScript);
+        let scriptTemplate = `(async env => {${await loadFile(path)}})(env)`;
+        eval(scriptTemplate);
+        env.remove('package');
+    }
+
     async function loadPage(name) {
         const path = `./pages/${name}/${name}`,
             template = await loadFile(`${path}.html`),
             page = document.createElement("section"),
-            script = document.createElement("script"),
             link = document.createElement("link");
 
         page.id = "page";
@@ -27,17 +54,14 @@
 
         setTimeout(() => {}, 0);
 
-        script.id = "script";
-        script.src = `${path}.js`;
-        document.body.appendChild(script);
+        loadEnvScript(`${path}.js`);
     }
 
     function clear() {
-        ['path', 'link', 'script']
-            .forEach(i=>{let e = document.getElementById(i);e.parentNode.replaceChild(null, e);});
+        ['page', 'link'].forEach(i=> {let e = document.getElementById(i);e.parentNode.replaceChild(null, e);});
     }
 
-    function Router() {
+    const router = (() => {
         let currentPage, routes = {};
 
         function add(path, name) {
@@ -48,26 +72,26 @@
             let route = routes[location.pathname.slice(1) || ''];
             console.log(route);
             if (route && route !== currentPage) {
-                if(currentPage)
+                if (currentPage)
                     clear();
                 currentPage = route;
                 loadPage(route);
             }
         }
 
-        function start(){
+        function start() {
             window.addEventListener('hashchange', load);
             window.addEventListener('load', load);
             load();
         }
 
         return {start, add};
-    }
+    })();
 
-    const router = Router();
     router.add('', 'login');
     router.add('login', 'login');
     router.add('profile', 'profile');
 
     router.start();
+
 })(window, window.fetch);

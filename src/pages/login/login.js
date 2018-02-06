@@ -1,45 +1,40 @@
-((global) => {
-    const
-        signup_close = document.getElementById('close-signup'),
-        signup_button = document.getElementById('signup'),
-        login_menu = document.getElementById('login-menu'),
-        signup_menu = document.getElementById('signup-menu');
+await env.get('package')('./packages/input-group.js');
 
-    function InputGroup() {
-        let inputs = Array.from(document.getElementsByTagName('input-group'));
-        inputs.forEach(inputGroup => {
-            let input, label;
-            Array.from(inputGroup.children).forEach(ele => ele.localName === 'input' ? input = ele : label = ele);
-            if (input) {
-                input.addEventListener('focus', () => label.classList.add('active'));
-                input.addEventListener('blur', () => input.value ? null : label.classList.remove('active'));
-            }
-        });
-    }
+const InputGroup = env.get('gui.InputGroup');
 
-    function onclick(ele, fn) {
-        ele.addEventListener('click', () => fn());
-    }
+const
+    signup_close = ele('close-signup'),
+    signup_button = ele('signup'),
+    login_menu = ele('login-menu'),
+    signup_menu = ele('signup-menu');
 
-    onclick(signup_button, () => {
-        signup_menu.classList.add('active');
-        signup_button.classList.add('hidden');
-        setTimeout(() => {
-            InputGroup();
-            login_menu.classList.add('hidden');
-        }, 1300 * .8);
-    });
+function ele(id) {
+    let e = document.getElementById(id);
+    e.toggleClass = name => e.classList.contains(name) ? e.classList.remove(name) : e.classList.add(name);
+    return e;
+}
 
-    onclick(signup_close, () => {
-        signup_menu.classList.add('decay');
-        setTimeout(() => {
-            login_menu.classList.remove('hidden');
-            signup_menu.classList.remove('active');
-            signup_menu.classList.remove('decay');
-            signup_button.classList.remove('hidden');
-        }, 600);
-    });
+function onclick(ele, fn) {
+    ele.addEventListener('click', () => fn());
+}
 
-    InputGroup();
+onclick(signup_button, () => {
+    signup_menu.toggleClass('active');
+    signup_button.toggleClass('hidden');
+    setTimeout(() => {
+        InputGroup();
+        login_menu.toggleClass('hidden');
+    }, 1300 * .8);
+});
 
-})(window);
+onclick(signup_close, () => {
+    signup_menu.toggleClass('decay');
+    setTimeout(() => {
+        login_menu.toggleClass('hidden');
+        signup_menu.toggleClass('active');
+        signup_menu.toggleClass('decay');
+        signup_button.toggleClass('hidden');
+    }, 600);
+});
+
+InputGroup();

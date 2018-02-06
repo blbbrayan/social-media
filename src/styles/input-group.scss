@@ -1,0 +1,21 @@
+input-group {
+  position: relative;
+  display: block;
+
+  input-label {
+    position: absolute;
+    display: block;
+    top: 8px;
+    left: 22%;
+    right: 0;
+    width: 60%;
+    color: white;
+    z-index: 0;
+    transition: .3s;
+    &.active {
+      top: -20px;
+      font-size: 85%;
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+}

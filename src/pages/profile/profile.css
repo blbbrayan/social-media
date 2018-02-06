@@ -10,6 +10,15 @@
   background-color: #00a1ff;
   color: white; }
 
+.primary-text {
+  color: #4b54fe; }
+
+.secondary-text {
+  color: #da5858; }
+
+.accent-text {
+  color: #00a1ff; }
+
 body {
   background-color: #4b54fe; }
 
@@ -34,12 +43,3 @@ h1 {
   margin-bottom: 10px; }
   .options a {
     margin: 0 10px; }
-
-accordian {
-  display: block; }
-  accordian h2 {
-    display: block;
-    color: white;
-    font-weight: bolder;
-    padding-left: 10px;
-    margin: 10px 0; }
