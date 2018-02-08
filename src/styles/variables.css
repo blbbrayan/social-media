@@ -1,0 +1,20 @@
+.primary {
+  background-color: #4b54fe;
+  color: white; }
+
+.secondary {
+  background-color: #da5858;
+  color: white; }
+
+.accent {
+  background-color: #00a1ff;
+  color: white; }
+
+.primary-text {
+  color: #4b54fe; }
+
+.secondary-text {
+  color: #da5858; }
+
+.accent-text {
+  color: #00a1ff; }

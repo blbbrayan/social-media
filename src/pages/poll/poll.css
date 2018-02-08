@@ -1,0 +1,89 @@
+.primary {
+  background-color: #4b54fe;
+  color: white; }
+
+.secondary {
+  background-color: #da5858;
+  color: white; }
+
+.accent {
+  background-color: #00a1ff;
+  color: white; }
+
+.primary-text {
+  color: #4b54fe; }
+
+.secondary-text {
+  color: #da5858; }
+
+.accent-text {
+  color: #00a1ff; }
+
+body {
+  background-color: #4b54fe; }
+
+#page > h1 {
+  text-align: center;
+  color: white;
+  margin-top: 5px;
+  margin-bottom: 15px; }
+
+#page .topic {
+  display: flex;
+  flex-direction: column; }
+  #page .topic card {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column; }
+    #page .topic card .content {
+      display: flex; }
+      #page .topic card .content img {
+        box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.3);
+        margin-left: -15px;
+        margin-top: -2px;
+        border-top-left-radius: 5px;
+        border-bottom-right-radius: 25px; }
+        @media screen and (max-width: 750px) {
+          #page .topic card .content img {
+            border-top-left-radius: 0;
+            width: 50%; } }
+      #page .topic card .content h1 {
+        margin: 0;
+        padding: 0 10px; }
+    #page .topic card .options {
+      box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.3);
+      background-color: #f7f7f7;
+      height: 35px;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 10px; }
+      #page .topic card .options button {
+        background-color: transparent;
+        border: none;
+        height: 35px;
+        width: 100%; }
+  #page .topic .comments {
+    background-color: #da5858;
+    color: white;
+    box-sizing: border-box; }
+    #page .topic .comments .comment {
+      display: flex;
+      flex-direction: column; }
+      #page .topic .comments .comment p {
+        font-size: 90%;
+        padding: 5px 10px;
+        margin: 0;
+        border-left: 5px solid #00a1ff; }
+      #page .topic .comments .comment .options {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 10px;
+        background-color: rgba(0, 0, 0, 0.1);
+        box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.3); }
+        #page .topic .comments .comment .options button {
+          color: white;
+          background: transparent;
+          border: none;
+          width: 100%;
+          height: 35px; }
