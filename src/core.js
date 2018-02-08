@@ -30,9 +30,13 @@
             });
     }
 
+    function removeComments(str){
+        return str.replace(/(\/\*([\s\S]*?)\*\/)|(\/\/(.*)$)/gm, '');
+    }
+
     async function loadEnvScript(path) {
         env.add('package', loadEnvScript);
-        let scriptTemplate = `(async env => {${await loadFile(path)}})(env)`;
+        let scriptTemplate = `(async env => {${removeComments(await loadFile(path))}})(env)`;
         eval(scriptTemplate);
         env.remove('package');
     }
@@ -90,7 +94,7 @@
 
     router.add('', 'login');
     router.add('login', 'login');
-    router.add('profile', 'profile');
+    router.add('home', 'poll');
 
     router.start();
 
