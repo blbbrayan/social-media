@@ -1,33 +1,29 @@
-await env.get('package')('./packages/input-group.js');
+const package = env.get('package');
 
-const InputGroup = env.get('gui.InputGroup');
+await package('./packages/input-group.js');
+await package('./packages/gui.js');
+
+const gui = env.get('gui');
+console.log(gui);
 
 const
-    signup_close = ele('close-signup'),
-    signup_button = ele('signup'),
-    login_menu = ele('login-menu'),
-    signup_menu = ele('signup-menu');
+    signup_close = gui.ele('close-signup'),
+    signup_button = gui.ele('signup'),
+    login_menu = gui.ele('login-menu'),
+    signup_menu = gui.ele('signup-menu');
 
-function ele(id) {
-    let e = document.getElementById(id);
-    e.toggleClass = name => e.classList.contains(name) ? e.classList.remove(name) : e.classList.add(name);
-    return e;
-}
 
-function onclick(ele, fn) {
-    ele.addEventListener('click', () => fn());
-}
 
-onclick(signup_button, () => {
+gui.onclick(signup_button, () => {
     signup_menu.toggleClass('active');
     signup_button.toggleClass('hidden');
     setTimeout(() => {
-        InputGroup();
+        gui.InputGroup();
         login_menu.toggleClass('hidden');
     }, 1300 * .8);
 });
 
-onclick(signup_close, () => {
+gui.onclick(signup_close, () => {
     signup_menu.toggleClass('decay');
     setTimeout(() => {
         login_menu.toggleClass('hidden');
@@ -37,4 +33,4 @@ onclick(signup_close, () => {
     }, 600);
 });
 
-InputGroup();
+gui.InputGroup();

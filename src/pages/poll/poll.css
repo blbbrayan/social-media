@@ -22,6 +22,9 @@
 body {
   background-color: #4b54fe; }
 
+* {
+  transition: .3s; }
+
 #page > h1 {
   text-align: center;
   color: white;
@@ -30,7 +33,16 @@ body {
 
 #page .topic {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  width: 33%; }
+  @media screen and (max-width: 1000px) {
+    #page .topic {
+      margin: 0 1%;
+      width: 48%; } }
+  @media screen and (max-width: 750px) {
+    #page .topic {
+      margin: 0;
+      width: 100%; } }
   #page .topic card {
     padding: 0;
     margin: 0;
@@ -40,7 +52,7 @@ body {
       display: flex; }
       #page .topic card .content img {
         box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.3);
-        margin-left: -15px;
+        margin-left: -2px;
         margin-top: -2px;
         border-top-left-radius: 5px;
         border-bottom-right-radius: 25px; }
@@ -54,15 +66,15 @@ body {
     #page .topic card .options {
       box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.3);
       background-color: #f7f7f7;
-      height: 35px;
       display: flex;
       justify-content: space-between;
       padding: 0 10px; }
       #page .topic card .options button {
-        background-color: transparent;
+        background: transparent;
         border: none;
-        height: 35px;
-        width: 100%; }
+        width: 100%;
+        height: 45px;
+        font-size: 110%; }
   #page .topic .comments {
     background-color: #da5858;
     color: white;
@@ -82,8 +94,17 @@ body {
         background-color: rgba(0, 0, 0, 0.1);
         box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.3); }
         #page .topic .comments .comment .options button {
-          color: white;
           background: transparent;
           border: none;
           width: 100%;
-          height: 35px; }
+          height: 45px;
+          font-size: 110%;
+          color: white; }
+          #page .topic .comments .comment .options button span {
+            width: 30px;
+            height: 25px;
+            line-height: 25px;
+            display: inline-block;
+            font-weight: bold;
+            text-align: center;
+            margin: 0 3px; }

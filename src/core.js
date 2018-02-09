@@ -21,6 +21,7 @@
         return {add, remove, get};
     })();
 
+
     async function loadFile(path) {
         return fetch(path)
             .then(res => res.text())
